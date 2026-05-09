@@ -10,18 +10,21 @@ const initDb = (callback) => {
 
   console.log('🔄 Trying to connect to MongoDB Atlas...');
 
-  MongoClient.connect(process.env.MONGODB_URI, {
+  const options = {
     serverSelectionTimeoutMS: 15000,
-  })
+    autoSelectFamily: false,           // ← This often fixes the SSL error
+  };
+
+  MongoClient.connect(process.env.MONGODB_URI, options)
     .then((client) => {
       db = client;
-      console.log('Successfully connected to MongoDB');
+      console.log('✅ Successfully connected to MongoDB');
       callback(null, db);
     })
     .catch((err) => {
-      console.error('MongoDB Connection Error');
-      console.error('Error Message:', err.message);
+      console.error('❌ MongoDB Connection Error');
       console.error('Error Name:', err.name);
+      console.error('Error Message:', err.message);
       callback(err);
     });
 };
