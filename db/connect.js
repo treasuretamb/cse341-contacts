@@ -8,14 +8,20 @@ const initDb = (callback) => {
     return callback(null, db);
   }
 
-  MongoClient.connect(process.env.MONGODB_URI)
+  console.log('🔄 Trying to connect to MongoDB Atlas...');
+
+  MongoClient.connect(process.env.MONGODB_URI, {
+    serverSelectionTimeoutMS: 15000,
+  })
     .then((client) => {
       db = client;
-      console.log('Connected to MongoDB');
+      console.log('Successfully connected to MongoDB');
       callback(null, db);
     })
     .catch((err) => {
-      console.error('MongoDB connection error:', err);
+      console.error('MongoDB Connection Error');
+      console.error('Error Message:', err.message);
+      console.error('Error Name:', err.name);
       callback(err);
     });
 };
