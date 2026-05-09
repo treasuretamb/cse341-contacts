@@ -14,11 +14,14 @@ app.get('/', (req, res) => {
 
 app.use('/contacts', require('./routes/contacts'));
 
+// Initialize MongoDB
 mongodb.initDb((err) => {
   if (err) {
-    console.error('Failed to connect to MongoDB:', err);
-    process.exit(1);        // Exit if DB connection fails
+    console.error('Failed to connect to MongoDB');
+    console.error('Error details:', err);
+    process.exit(1);
   } else {
+    console.log('Successfully connected to MongoDB');
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
