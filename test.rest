@@ -1,6 +1,6 @@
 ### Base URL
 @baseUrl = http://localhost:8080
-# @baseUrl = https://cse341-contacts-z2ir.onrender.com 
+@baseUrl = https://cse341-contacts-z2ir.onrender.com
 
 ### GET All Contacts
 GET {{baseUrl}}/contacts
