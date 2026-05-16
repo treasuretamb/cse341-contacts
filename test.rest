@@ -1,5 +1,36 @@
-### Get all contacts
-GET http://localhost:8080/contacts
+### Base URL
+@baseUrl = http://localhost:8080
+# @baseUrl = https://cse341-contacts-z2ir.onrender.com 
 
-### Get single contact (replace id with a real one after testing above)
-GET http://localhost:8080/contacts/PASTE_AN_ID_HERE
+### GET All Contacts
+GET {{baseUrl}}/contacts
+
+### GET Single Contact to be replaced with real ID
+GET {{baseUrl}}/contacts/PASTE_ID_HERE
+
+### POST - Create New Contact
+POST {{baseUrl}}/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Rand",
+  "lastName": "Omm",
+  "email": "randomm@gmail.com",
+  "favoriteColor": "Blue",
+  "birthday": "1995-05-15"
+}
+
+### PUT - Update Contact to be replaced with real ID
+PUT {{baseUrl}}/contacts/PASTE_ID_HERE
+Content-Type: application/json
+
+{
+  "firstName": "Osa",
+  "lastName": "Muan",
+  "email": "osamuan@exagmail.com",
+  "favoriteColor": "Green",
+  "birthday": "1995-05-15"
+}
+
+### DELETE Contact to be replaced with real ID
+DELETE {{baseUrl}}/contacts/PASTE_ID_HERE
